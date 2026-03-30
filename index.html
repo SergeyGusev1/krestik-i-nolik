@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Крестик и Нолик — Антикафе & Развлечения в Мурино</title>
+  <meta name="description" content="Антикафе Крестик и Нолик в Мурино. Настольные игры, PlayStation 5, кальяны, 4K TV. Онлайн-бронирование." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo" id="adminLogoTrigger">
+        <span class="logo-x">X</span><span class="logo-o">O</span>
+        <span class="logo-text">Крестик и Нолик</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#pricing">Цены</a></li>
+        <li><a href="#booking" class="nav__cta">Забронировать</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <button class="nav__burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__overlay"></div>
+      <div class="hero__shapes">
+        <div class="shape shape-x">✕</div>
+        <div class="shape shape-o">○</div>
+        <div class="shape shape-x2">✕</div>
+        <div class="shape shape-o2">○</div>
+      </div>
+    </div>
+    <div class="hero__content container">
+      <div class="hero__badge">Мурино • <span data-contact="address-short">Шоссе в Лаврики, 83</span></div>
+      <h1 class="hero__title">Место, где<br /><span>выигрывают все</span></h1>
+      <p class="hero__subtitle">Антикафе с настольными играми, PlayStation 5, кальянами и уютными комнатами для компаний</p>
+      <div class="hero__actions">
+        <a href="#booking" class="btn btn--primary">Забронировать стол</a>
+        <a href="#services" class="btn btn--outline">Узнать больше</a>
+      </div>
+      <div class="hero__stats">
+        <div class="stat">
+          <span class="stat__num">100+</span>
+          <span class="stat__label">Настольных игр</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__num">4K</span>
+          <span class="stat__label">Телевизоры</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__num">PS5</span>
+          <span class="stat__label">PlayStation</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__num">5★</span>
+          <span class="stat__label">Рейтинг</span>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="hero__scroll">
+      <span>Листай вниз</span>
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__content">
+          <div class="section__tag">О заведении</div>
+          <h2 class="section__title">Антикафе нового формата</h2>
+          <p class="about__text">
+            Крестик и Нолик — это уютное пространство, где вы платите только за время, а не за каждый напиток. Чай, кофе и снеки входят в стоимость.
+          </p>
+          <p class="about__text">
+            У нас более 100 настольных игр, несколько PlayStation 5, кальяны от мастеров и 4K-экраны. Идеально для дружеских посиделок, свиданий и корпоративов.
+          </p>
+          <div class="about__features">
+            <div class="feature"><div class="feature__icon">🎲</div><span>Настольные игры включены</span></div>
+            <div class="feature"><div class="feature__icon">☕</div><span>Чай и снеки бесплатно</span></div>
+            <div class="feature"><div class="feature__icon">🌐</div><span>Wi-Fi без ограничений</span></div>
+            <div class="feature"><div class="feature__icon">🥤</div><span>Можно со своей едой</span></div>
+          </div>
+        </div>
+        <div class="about__visual">
+          <div class="visual-card visual-card--main" data-about-slot="main" onclick="aboutPhotoClick(this)">
+            <div class="visual-card__inner">
+              <img src="" alt="Интерьер" />
+              <div class="visual-card__placeholder"><span>📸</span><p>Фото интерьера</p></div>
+            </div>
+            <div class="visual-card__admin-hint">📷 Нажмите для замены</div>
+          </div>
+          <div class="visual-card visual-card--sm visual-card--top" data-about-slot="games" onclick="aboutPhotoClick(this)">
+            <div class="visual-card__inner">
+              <img src="" alt="Настольные игры" />
+              <div class="visual-card__placeholder"><span>🎲</span><p>Игры</p></div>
+            </div>
+            <div class="visual-card__admin-hint">📷 Нажмите</div>
+          </div>
+          <div class="visual-card visual-card--sm visual-card--bot" data-about-slot="ps5" onclick="aboutPhotoClick(this)">
+            <div class="visual-card__inner">
+              <img src="" alt="PlayStation 5" />
+              <div class="visual-card__placeholder"><span>🎮</span><p>PS5</p></div>
+            </div>
+            <div class="visual-card__admin-hint">📷 Нажмите</div>
+          </div>
+          <!-- скрытый input для about-фото -->
+          <input type="file" id="aboutPhotoInput" accept="image/*" hidden onchange="handleAboutPhoto(event)" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services section section--dark" id="services">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag">Что у нас есть</div>
+        <h2 class="section__title">Наши развлечения</h2>
+        <p class="section__sub">Все включено в стоимость часа, кроме кальяна и PS5</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card">
+          <div class="service-card__icon">🎲</div>
+          <h3>Настольные игры</h3>
+          <p>Более 100 игр для всех возрастов: от «Мафии» и «Уно» до «Колонизаторов» и «Детектива»</p>
+          <div class="service-card__tag">Включено в час</div>
+        </div>
+        <div class="service-card service-card--accent">
+          <div class="service-card__icon">🎮</div>
+          <h3>PlayStation 5</h3>
+          <p>Современные консоли с большим выбором игр на 4K-экранах. Футбол, гонки, файтинги</p>
+          <div class="service-card__tag">+ доп. тариф</div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">💨</div>
+          <h3>Кальяны</h3>
+          <p>Кальяны от опытных мастеров с широким выбором вкусов. Паровые коктейли</p>
+          <div class="service-card__tag">+ доп. тариф</div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">📺</div>
+          <h3>4K Телевизоры</h3>
+          <p>Большие экраны для просмотра фильмов, спортивных трансляций и игр</p>
+          <div class="service-card__tag">Включено в час</div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">🚪</div>
+          <h3>Приватные комнаты</h3>
+          <p>Отдельные кабинки для компаний — никто не мешает вашему отдыху</p>
+          <div class="service-card__tag">Включено в час</div>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">☕</div>
+          <h3>Чай и снеки</h3>
+          <p>Горячие напитки и лёгкие закуски бесплатно весь вечер. Можно приносить своё</p>
+          <div class="service-card__tag">Бесплатно</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery-section section" id="gallery">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag">Атмосфера</div>
+        <h2 class="section__title">Галерея</h2>
+        <p class="section__sub">Посмотрите, как у нас уютно</p>
+      </div>
+      <div class="gallery__grid" id="galleryGrid">
+        <div class="gallery__item" data-slot="0">
+          <img src="" alt="Фото 1" />
+          <div class="gallery__empty-slot"><span>📷</span><p>Фото появится здесь</p></div>
+          <div class="gallery__overlay"><button class="gallery__zoom" onclick="openLightbox(this)">⤢</button></div>
+          <button class="gallery__delete admin-only" onclick="deletePhoto(this)" title="Удалить фото">✕</button>
+        </div>
+        <div class="gallery__item" data-slot="1">
+          <img src="" alt="Фото 2" />
+          <div class="gallery__empty-slot"><span>📷</span><p>Фото появится здесь</p></div>
+          <div class="gallery__overlay"><button class="gallery__zoom" onclick="openLightbox(this)">⤢</button></div>
+          <button class="gallery__delete admin-only" onclick="deletePhoto(this)" title="Удалить фото">✕</button>
+        </div>
+        <div class="gallery__item gallery__item--tall" data-slot="2">
+          <img src="" alt="Фото 3" />
+          <div class="gallery__empty-slot"><span>📷</span><p>Фото появится здесь</p></div>
+          <div class="gallery__overlay"><button class="gallery__zoom" onclick="openLightbox(this)">⤢</button></div>
+          <button class="gallery__delete admin-only" onclick="deletePhoto(this)" title="Удалить фото">✕</button>
+        </div>
+        <div class="gallery__item" data-slot="3">
+          <img src="" alt="Фото 4" />
+          <div class="gallery__empty-slot"><span>📷</span><p>Фото появится здесь</p></div>
+          <div class="gallery__overlay"><button class="gallery__zoom" onclick="openLightbox(this)">⤢</button></div>
+          <button class="gallery__delete admin-only" onclick="deletePhoto(this)" title="Удалить фото">✕</button>
+        </div>
+        <div class="gallery__item" data-slot="4">
+          <img src="" alt="Фото 5" />
+          <div class="gallery__empty-slot"><span>📷</span><p>Фото появится здесь</p></div>
+          <div class="gallery__overlay"><button class="gallery__zoom" onclick="openLightbox(this)">⤢</button></div>
+          <button class="gallery__delete admin-only" onclick="deletePhoto(this)" title="Удалить фото">✕</button>
+        </div>
+        <div class="gallery__item gallery__item--wide" data-slot="5">
+          <img src="" alt="Фото 6" />
+          <div class="gallery__empty-slot"><span>📷</span><p>Фото появится здесь</p></div>
+          <div class="gallery__overlay"><button class="gallery__zoom" onclick="openLightbox(this)">⤢</button></div>
+          <button class="gallery__delete admin-only" onclick="deletePhoto(this)" title="Удалить фото">✕</button>
+        </div>
+      </div>
+      <!-- Кнопка добавить — только для admin -->
+      <div class="gallery__add-area admin-only" id="galleryAdminPanel" style="display:none">
+        <label class="btn btn--outline btn--upload" for="photoUpload">+ Добавить фотографии</label>
+        <input type="file" id="photoUpload" accept="image/*" multiple hidden onchange="handlePhotoUpload(event)" />
+        <p class="gallery__hint">Формат: JPG, PNG, WEBP. Максимум 10 МБ на фото</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox__close" onclick="closeLightbox()">✕</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+  </div>
+
+  <!-- ===== PRICING ===== -->
+  <section class="pricing section section--dark" id="pricing">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag">Стоимость</div>
+        <h2 class="section__title">Цены</h2>
+        <p class="section__sub">Платите только за время. Чай и снеки включены</p>
+      </div>
+      <div class="pricing__grid">
+
+        <div class="price-card">
+          <div class="price-card__header">
+            <div class="price-card__icon">🕐</div>
+            <h3>Основное время</h3>
+            <p data-price="basic-label">Будни 14:00 – 20:00</p>
+          </div>
+          <div class="price-card__price">
+            <span class="price" data-price="basic">150 ₽</span>
+            <span class="per">/ час с человека</span>
+          </div>
+          <ul class="price-card__list">
+            <li>✓ Все настольные игры</li>
+            <li>✓ 4K-телевизоры</li>
+            <li>✓ Чай и снеки</li>
+            <li>✓ Wi-Fi</li>
+          </ul>
+          <a href="#booking" class="btn btn--outline">Забронировать</a>
+        </div>
+
+        <div class="price-card price-card--featured">
+          <div class="price-card__badge">Популярное</div>
+          <div class="price-card__header">
+            <div class="price-card__icon">🌙</div>
+            <h3>Вечернее время</h3>
+            <p data-price="evening-label">Ежедневно с 20:00</p>
+          </div>
+          <div class="price-card__price">
+            <span class="price" data-price="evening">200 ₽</span>
+            <span class="per">/ час с человека</span>
+          </div>
+          <ul class="price-card__list">
+            <li>✓ Все настольные игры</li>
+            <li>✓ 4K-телевизоры</li>
+            <li>✓ Чай и снеки</li>
+            <li>✓ Wi-Fi</li>
+          </ul>
+          <a href="#booking" class="btn btn--primary">Забронировать</a>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card__header">
+            <div class="price-card__icon">🎮</div>
+            <h3>PlayStation 5</h3>
+            <p data-price="ps5-label">Дополнительно к основному</p>
+          </div>
+          <div class="price-card__price">
+            <span class="price" data-price="ps5">350 ₽</span>
+            <span class="per">/ час</span>
+          </div>
+          <ul class="price-card__list">
+            <li>✓ PS5 консоль</li>
+            <li>✓ 4K TV экран</li>
+            <li>✓ Большой выбор игр</li>
+            <li>✓ До 4 игроков</li>
+          </ul>
+          <a href="#booking" class="btn btn--outline">Забронировать</a>
+        </div>
+
+      </div>
+
+      <div class="hookah-pricing">
+        <h3>Кальяны</h3>
+        <div class="hookah__grid">
+          <div class="hookah-item">
+            <span class="hookah-item__name">Стандарт</span>
+            <span class="hookah-item__dots"></span>
+            <span class="hookah-item__price" data-price="hookah-standard">700 ₽</span>
+          </div>
+          <div class="hookah-item">
+            <span class="hookah-item__name">Двойной</span>
+            <span class="hookah-item__dots"></span>
+            <span class="hookah-item__price" data-price="hookah-double">1 000 ₽</span>
+          </div>
+          <div class="hookah-item">
+            <span class="hookah-item__name">Авторский</span>
+            <span class="hookah-item__dots"></span>
+            <span class="hookah-item__price" data-price="hookah-author">1 200 ₽</span>
+          </div>
+          <div class="hookah-item">
+            <span class="hookah-item__name">Переподжиг</span>
+            <span class="hookah-item__dots"></span>
+            <span class="hookah-item__price" data-price="hookah-relight">200 ₽</span>
+          </div>
+        </div>
+        <p class="hookah-note">* Цены актуальны, уточняйте при бронировании</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING ===== -->
+  <section class="booking section" id="booking">
+    <div class="container">
+      <div class="booking__wrapper">
+        <div class="booking__info">
+          <div class="section__tag">Онлайн-бронирование</div>
+          <h2 class="section__title">Забронируйте стол</h2>
+          <p>Оставьте заявку — мы перезвоним в течение 15 минут и подтвердим бронь</p>
+          <div class="booking__contacts">
+            <a href="#" class="booking__contact" id="phoneLink">
+              <div class="booking__contact-icon">📞</div>
+              <div>
+                <span>Телефон / WhatsApp</span>
+                <strong data-contact="phone-display">+7 993 966-62-72</strong>
+              </div>
+            </a>
+            <a href="#" class="booking__contact" id="tgLink">
+              <div class="booking__contact-icon">✈️</div>
+              <div>
+                <span>Telegram</span>
+                <strong>Написать в Telegram</strong>
+              </div>
+            </a>
+          </div>
+          <div class="booking__hours">
+            <div class="hours-row">
+              <span>Пн – Чт, Вс</span>
+              <span data-contact="hours-weekday">14:00 – 02:00</span>
+            </div>
+            <div class="hours-row">
+              <span>Пт – Сб</span>
+              <span data-contact="hours-weekend">14:00 – 03:00</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="booking__form" id="bookingForm" onsubmit="submitBooking(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Имя *</label>
+              <input type="text" id="fname" name="name" placeholder="Ваше имя" required />
+            </div>
+            <div class="form-group">
+              <label for="fphone">Телефон *</label>
+              <input type="tel" id="fphone" name="phone" placeholder="+7 (___) ___-__-__" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fdate">Дата *</label>
+              <input type="date" id="fdate" name="date" required />
+            </div>
+            <div class="form-group">
+              <label for="ftime">Время *</label>
+              <select id="ftime" name="time" required>
+                <option value="">Выберите время</option>
+                <option>14:00</option><option>15:00</option><option>16:00</option>
+                <option>17:00</option><option>18:00</option><option>19:00</option>
+                <option>20:00</option><option>21:00</option><option>22:00</option>
+                <option>23:00</option><option>00:00</option><option>01:00</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fpeople">Количество гостей *</label>
+              <select id="fpeople" name="people" required>
+                <option value="">Выберите</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fservice">Услуги</label>
+              <select id="fservice" name="service">
+                <option value="">Только время</option>
+                <option>+ PlayStation 5</option>
+                <option>+ Кальян</option>
+                <option>+ PS5 и Кальян</option>
+                <option>Приватная комната</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fcomment">Комментарий</label>
+            <textarea id="fcomment" name="comment" rows="3" placeholder="Особые пожелания, повод для встречи..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+          <p class="form__privacy">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+        </form>
+
+        <div class="booking__success" id="bookingSuccess">
+          <div class="success-icon">✓</div>
+          <h3>Заявка принята!</h3>
+          <p>Мы перезвоним вам в течение 15 минут для подтверждения бронирования</p>
+          <button class="btn btn--outline" onclick="resetBooking()">Новая заявка</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTS ===== -->
+  <section class="contacts section section--dark" id="contacts">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag">Как нас найти</div>
+        <h2 class="section__title">Контакты</h2>
+      </div>
+      <div class="contacts__grid">
+        <div class="contacts__info">
+          <div class="contact-block">
+            <div class="contact-block__icon">📍</div>
+            <div>
+              <h4>Адрес</h4>
+              <p data-contact="address">Шоссе в Лаврики, 83<br />Мурино, Ленинградская область<br />(цокольный этаж)</p>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block__icon">📞</div>
+            <div>
+              <h4>Телефон</h4>
+              <a href="#" id="contactPhoneLink" data-contact="phone-display">+7 993 966-62-72</a>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block__icon">🕐</div>
+            <div>
+              <h4>Режим работы</h4>
+              <p>Пн–Чт, Вс: <span data-contact="hours-weekday">14:00 – 02:00</span><br />Пт–Сб: <span data-contact="hours-weekend">14:00 – 03:00</span></p>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block__icon">💳</div>
+            <div>
+              <h4>Оплата</h4>
+              <p>Наличные, карта, QR-код</p>
+            </div>
+          </div>
+          <div class="contacts__social">
+            <a href="#" id="vkLink" target="_blank" class="social-link social-link--vk">VK</a>
+            <a href="#" id="tgLinkContacts" target="_blank" class="social-link social-link--tg">TG</a>
+            <a href="#" id="waLink" target="_blank" class="social-link social-link--wa">WA</a>
+          </div>
+        </div>
+        <div class="contacts__map">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=30.458395%2C60.063235&z=16&pt=30.458395,60.063235,pm2rdm"
+            width="100%" height="400" frameborder="0" allowfullscreen title="Карта" loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="nav__logo">
+            <span class="logo-x">X</span><span class="logo-o">O</span>
+            <span class="logo-text">Крестик и Нолик</span>
+          </a>
+          <p>Антикафе и развлекательный центр в Мурино</p>
+        </div>
+        <div class="footer__links">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#gallery">Галерея</a></li>
+            <li><a href="#pricing">Цены</a></li>
+            <li><a href="#booking">Бронирование</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <h4>Контакты</h4>
+          <p><a href="#" id="footerPhoneLink" data-contact="phone-display">+7 993 966-62-72</a></p>
+          <p data-contact="address-short">Шоссе в Лаврики, 83, Мурино</p>
+          <div class="footer__social">
+            <a href="#" id="footerVkLink" target="_blank">VK</a>
+            <a href="#" id="footerTgLink" target="_blank">Telegram</a>
+            <a href="#" id="footerWaLink" target="_blank">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Крестик и Нолик. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================
+       ADMIN TOOLBAR (скрыта по умолчанию)
+       =================================== -->
+  <div class="admin-bar" id="adminBar">
+    <div class="admin-bar__inner container">
+      <span class="admin-bar__label">⚙ Администратор</span>
+      <div class="admin-bar__actions">
+        <button class="admin-btn" onclick="openModal('photosModal')">📷 Фото</button>
+        <button class="admin-btn" onclick="openModal('pricesModal')">💰 Цены</button>
+        <button class="admin-btn" onclick="openModal('contactsModal')">📞 Контакты</button>
+        <button class="admin-btn admin-btn--danger" onclick="adminLogout()">Выйти</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================
+       MODAL: ФОТО
+       =================================== -->
+  <div class="modal" id="photosModal">
+    <div class="modal__overlay" onclick="closeModal('photosModal')"></div>
+    <div class="modal__box">
+      <div class="modal__header">
+        <h3>📷 Управление фотографиями</h3>
+        <button class="modal__close" onclick="closeModal('photosModal')">✕</button>
+      </div>
+      <div class="modal__body">
+        <p class="modal__hint">Выберите файлы для добавления в галерею. Чтобы удалить фото — нажмите <strong>✕</strong> на карточке в галерее.</p>
+        <label class="btn btn--primary btn--upload-modal" for="photoUploadModal">
+          + Выбрать фотографии
+        </label>
+        <input type="file" id="photoUploadModal" accept="image/*" multiple hidden onchange="handlePhotoUpload(event); closeModal('photosModal')" />
+        <div class="modal__photo-preview" id="modalPhotoPreview"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================
+       MODAL: ЦЕНЫ
+       =================================== -->
+  <div class="modal" id="pricesModal">
+    <div class="modal__overlay" onclick="closeModal('pricesModal')"></div>
+    <div class="modal__box">
+      <div class="modal__header">
+        <h3>💰 Редактировать цены</h3>
+        <button class="modal__close" onclick="closeModal('pricesModal')">✕</button>
+      </div>
+      <div class="modal__body">
+        <div class="modal__section">
+          <h4>Тарифы времени</h4>
+          <div class="modal__fields">
+            <div class="modal__field">
+              <label>Основное время (будни)</label>
+              <div class="modal__field-row">
+                <input type="text" id="mp-basic" placeholder="150 ₽" />
+                <input type="text" id="mp-basic-label" placeholder="Будни 14:00 – 20:00" />
+              </div>
+            </div>
+            <div class="modal__field">
+              <label>Вечернее время</label>
+              <div class="modal__field-row">
+                <input type="text" id="mp-evening" placeholder="200 ₽" />
+                <input type="text" id="mp-evening-label" placeholder="Ежедневно с 20:00" />
+              </div>
+            </div>
+            <div class="modal__field">
+              <label>PlayStation 5</label>
+              <div class="modal__field-row">
+                <input type="text" id="mp-ps5" placeholder="350 ₽" />
+                <input type="text" id="mp-ps5-label" placeholder="Дополнительно к основному" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal__section">
+          <h4>Кальяны</h4>
+          <div class="modal__fields">
+            <div class="modal__field">
+              <label>Стандарт</label>
+              <input type="text" id="mp-hookah-standard" placeholder="700 ₽" />
+            </div>
+            <div class="modal__field">
+              <label>Двойной</label>
+              <input type="text" id="mp-hookah-double" placeholder="1 000 ₽" />
+            </div>
+            <div class="modal__field">
+              <label>Авторский</label>
+              <input type="text" id="mp-hookah-author" placeholder="1 200 ₽" />
+            </div>
+            <div class="modal__field">
+              <label>Переподжиг</label>
+              <input type="text" id="mp-hookah-relight" placeholder="200 ₽" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--outline" onclick="closeModal('pricesModal')">Отмена</button>
+        <button class="btn btn--primary" onclick="savePrices()">Сохранить цены</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================
+       MODAL: КОНТАКТЫ
+       =================================== -->
+  <div class="modal" id="contactsModal">
+    <div class="modal__overlay" onclick="closeModal('contactsModal')"></div>
+    <div class="modal__box">
+      <div class="modal__header">
+        <h3>📞 Редактировать контакты</h3>
+        <button class="modal__close" onclick="closeModal('contactsModal')">✕</button>
+      </div>
+      <div class="modal__body">
+        <div class="modal__section">
+          <h4>Основные данные</h4>
+          <div class="modal__fields">
+            <div class="modal__field">
+              <label>Телефон (для ссылки, только цифры)</label>
+              <input type="text" id="mc-phone-raw" placeholder="79939666272" />
+            </div>
+            <div class="modal__field">
+              <label>Телефон (отображение)</label>
+              <input type="text" id="mc-phone-display" placeholder="+7 993 966-62-72" />
+            </div>
+            <div class="modal__field">
+              <label>Адрес (краткий, для шапки)</label>
+              <input type="text" id="mc-address-short" placeholder="Шоссе в Лаврики, 83" />
+            </div>
+            <div class="modal__field">
+              <label>Адрес (полный, для контактов)</label>
+              <textarea id="mc-address" rows="3" placeholder="Шоссе в Лаврики, 83&#10;Мурино, Ленинградская область&#10;(цокольный этаж)"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal__section">
+          <h4>Режим работы</h4>
+          <div class="modal__fields">
+            <div class="modal__field">
+              <label>Пн–Чт, Вс (часы)</label>
+              <input type="text" id="mc-hours-weekday" placeholder="14:00 – 02:00" />
+            </div>
+            <div class="modal__field">
+              <label>Пт–Сб (часы)</label>
+              <input type="text" id="mc-hours-weekend" placeholder="14:00 – 03:00" />
+            </div>
+          </div>
+        </div>
+        <div class="modal__section">
+          <h4>Ссылки на соцсети</h4>
+          <div class="modal__fields">
+            <div class="modal__field">
+              <label>ВКонтакте (полная ссылка)</label>
+              <input type="text" id="mc-vk" placeholder="https://vk.com/krestikinolik83" />
+            </div>
+            <div class="modal__field">
+              <label>Telegram (полная ссылка)</label>
+              <input type="text" id="mc-tg" placeholder="https://t.me/+79939666272" />
+            </div>
+            <div class="modal__field">
+              <label>WhatsApp (полная ссылка)</label>
+              <input type="text" id="mc-wa" placeholder="https://wa.me/79939666272" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--outline" onclick="closeModal('contactsModal')">Отмена</button>
+        <button class="btn btn--primary" onclick="saveContacts()">Сохранить контакты</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast уведомление -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
