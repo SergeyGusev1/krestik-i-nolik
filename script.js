@@ -583,15 +583,40 @@ if (phoneInput) {
   });
 }
 
-function submitBooking(e) {
+async function submitBooking(e) {
   e.preventDefault();
   const btn = bookingForm.querySelector('button[type="submit"]');
   btn.disabled = true;
   btn.textContent = 'Отправляем...';
-  setTimeout(() => {
-    bookingForm.classList.add('hidden');
-    bookingSuccess.classList.add('show');
-  }, 1200);
+
+  const data = {
+    name:    document.getElementById('fname').value.trim(),
+    phone:   document.getElementById('fphone').value.trim(),
+    date:    document.getElementById('fdate').value,
+    time:    document.getElementById('ftime').value,
+    people:  document.getElementById('fpeople').value,
+    service: document.getElementById('fservice').value,
+    comment: document.getElementById('fcomment').value.trim(),
+  };
+
+  try {
+    const res = await fetch('/api/booking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      bookingForm.classList.add('hidden');
+      bookingSuccess.classList.add('show');
+    } else {
+      throw new Error();
+    }
+  } catch {
+    showToast('Ошибка отправки. Позвоните нам напрямую!', true);
+    btn.disabled = false;
+    btn.textContent = 'Отправить заявку';
+  }
 }
 
 function resetBooking() {

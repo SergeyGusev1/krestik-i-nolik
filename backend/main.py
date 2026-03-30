@@ -2,6 +2,7 @@ import os
 import json
 import uuid
 import shutil
+import httpx
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
@@ -17,7 +18,9 @@ from pydantic import BaseModel
 # ─────────────────────────────────────────────
 ADMIN_PASSWORD   = os.getenv("ADMIN_PASSWORD", "krestik2025")
 SECRET_KEY       = os.getenv("SECRET_KEY",      "super-secret-key-change-me")
-TOKEN_EXPIRE_H   = 24          # часов до истечения токена
+TG_TOKEN         = os.getenv("TG_TOKEN",        "")   # токен бота от @BotFather
+TG_CHAT_ID       = os.getenv("TG_CHAT_ID",      "")   # твой chat_id
+TOKEN_EXPIRE_H   = 24
 MAX_UPLOAD_MB    = 10
 ALLOWED_TYPES    = {"image/jpeg", "image/png", "image/webp", "image/gif"}
 
@@ -29,8 +32,9 @@ FRONTEND_DIR = BASE_DIR.parent                # корень проекта (ind
 DATA_DIR     = BASE_DIR / "data"
 GALLERY_DIR  = DATA_DIR / "gallery"
 ABOUT_DIR    = DATA_DIR / "about"
-PRICES_FILE  = DATA_DIR / "prices.json"
-CONTACTS_FILE= DATA_DIR / "contacts.json"
+PRICES_FILE   = DATA_DIR / "prices.json"
+CONTACTS_FILE = DATA_DIR / "contacts.json"
+BOOKINGS_FILE = DATA_DIR / "bookings.json"
 
 for d in [DATA_DIR, GALLERY_DIR, ABOUT_DIR]:
     d.mkdir(parents=True, exist_ok=True)
@@ -108,11 +112,41 @@ app.add_middleware(
 )
 
 # ─────────────────────────────────────────────
-#  AUTH
+#  МОДЕЛИ
 # ─────────────────────────────────────────────
 class LoginRequest(BaseModel):
     password: str
 
+class BookingRequest(BaseModel):
+    name:    str
+    phone:   str
+    date:    str
+    time:    str
+    people:  str
+    service: str = ""
+    comment: str = ""
+
+# ─────────────────────────────────────────────
+#  TELEGRAM
+# ─────────────────────────────────────────────
+async def send_telegram(text: str):
+    """Отправляет сообщение владельцу в Telegram. Молча пропускает если не настроен."""
+    if not TG_TOKEN or not TG_CHAT_ID:
+        return
+    url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
+    try:
+        async with httpx.AsyncClient(timeout=5) as client:
+            await client.post(url, json={
+                "chat_id":    TG_CHAT_ID,
+                "text":       text,
+                "parse_mode": "HTML",
+            })
+    except Exception:
+        pass  # не блокируем сайт если Telegram недоступен
+
+# ─────────────────────────────────────────────
+#  AUTH
+# ─────────────────────────────────────────────
 @app.post("/api/auth")
 def login(req: LoginRequest):
     if req.password != ADMIN_PASSWORD:
@@ -146,6 +180,52 @@ def update_contacts(data: dict, _=Depends(require_admin)):
     current.update({k: v for k, v in data.items() if v})
     save_json(CONTACTS_FILE, current)
     return current
+
+# ─────────────────────────────────────────────
+#  BOOKING
+# ─────────────────────────────────────────────
+@app.post("/api/booking")
+async def create_booking(req: BookingRequest):
+    # Сохраняем в файл
+    bookings = json.loads(BOOKINGS_FILE.read_text(encoding="utf-8")) if BOOKINGS_FILE.exists() else []
+    entry = {
+        "id":      str(uuid.uuid4())[:8],
+        "created": datetime.now(tz=timezone.utc).strftime("%d.%m.%Y %H:%M"),
+        "name":    req.name,
+        "phone":   req.phone,
+        "date":    req.date,
+        "time":    req.time,
+        "people":  req.people,
+        "service": req.service,
+        "comment": req.comment,
+    }
+    bookings.append(entry)
+    BOOKINGS_FILE.write_text(json.dumps(bookings, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # Отправляем в Telegram
+    service_line = f"\n🎮 <b>Услуги:</b> {req.service}" if req.service else ""
+    comment_line = f"\n💬 <b>Комментарий:</b> {req.comment}" if req.comment else ""
+    msg = (
+        f"📅 <b>Новая заявка на бронирование!</b>\n\n"
+        f"👤 <b>Имя:</b> {req.name}\n"
+        f"📞 <b>Телефон:</b> {req.phone}\n"
+        f"📆 <b>Дата:</b> {req.date}\n"
+        f"⏰ <b>Время:</b> {req.time}\n"
+        f"👥 <b>Гостей:</b> {req.people}"
+        f"{service_line}"
+        f"{comment_line}\n\n"
+        f"#заявка #{entry['id']}"
+    )
+    await send_telegram(msg)
+
+    return {"ok": True, "id": entry["id"]}
+
+@app.get("/api/bookings")
+def get_bookings(_=Depends(require_admin)):
+    """Список всех заявок — только для администратора."""
+    if not BOOKINGS_FILE.exists():
+        return []
+    return json.loads(BOOKINGS_FILE.read_text(encoding="utf-8"))
 
 # ─────────────────────────────────────────────
 #  GALLERY
