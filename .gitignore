@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+ENV/
+
+# Uploaded user files (хранятся на сервере, не в репо)
+backend/data/gallery/
+backend/data/about/
+
+# Sensitive data files (цены и контакты — восстанавливаются из дефолтов)
+# backend/data/prices.json
+# backend/data/contacts.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Env files
+.env
+.env.local
+*.env
+
+# Logs
+*.log
+uvicorn.log
+
+# Node (на случай будущего)
+node_modules/
